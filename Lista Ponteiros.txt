@@ -1,0 +1,552 @@
+Questão 01)
+Os ponteiros são variáveis que permitem armazenar o endereço onde se localiza certas informações. Dessa forma, facilita a melhor organização e distribuição de blocos, assim, é de grande importãncia para as engenharias, principalmente as de computação.
+
+Questão 02)
+int i=3,j=5;
+int *p, *q;
+p = &i;
+q = &j;
+Determine o valor das seguintes expressões:
+
+◦ p == &i;              //◦ True
+◦ *p - *q;             // ◦ -2
+◦ **&p;               //◦ 3
+◦ 3 - *p/(*q) + 7;   // ◦ 10
+
+Questão 03)
+main(){
+  int i=5, *p;
+  p = &i;
+  printf("%x %d %d %d %d", p,*p+2,**&p,3**p,**&p+4);
+}
+//Rsultados:
+//4094; 7; 5;  15; 9.
+
+Questão04)
+                       //Respostas:
+ p = &i;                // ◦ Legal
+ *q = &j;               // ◦ Ilegal
+ p = &*&i;              // ◦ Legal
+ i = (*&)j;             // ◦ Ilegal
+ i = *&j;               // ◦ Legal
+ i = &&j;               // ◦ Ilegal
+ q = *p;                // ◦ Ilegal
+ i = (*p)` + *q;
+        // ◦ Legal
+
+Questão 05)
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+  int valor;
+  int *p1;
+1
+  float temp;
+  float *p2;
+  char aux;
+  char *nome = "Ponteiros";
+  char *p3;
+  int idade;
+  int vetor[3];
+  int *p4;
+  int *p5;
+  /* (a) */
+  valor = 10;
+  p1 = &valor;
+  *p1 = 20;
+  printf("%d \n", valor);
+  /* (b) */
+  temp = 26.5;
+  p2 = &temp;
+  *p2 = 29.0;
+  printf("%.1f \n", temp);
+  /* (c) */
+  p3 = &nome[0];
+  aux = *p3;
+  printf("%c \n", aux);
+  /* (d) */
+  p3 = &nome[4];
+  aux = *p3;
+  printf("%c \n", aux);
+  /* (e) */
+  p3 = nome;
+  printf("%c \n", *p3);
+  /* (f) */
+  p3 = p3 + 4;
+  printf("%c \n", *p3);
+  /* (g) */
+  p3--;
+  printf("%c \n", *p3);
+  /* (h) */
+  vetor[0] = 31;
+  vetor[1] = 45;
+  vetor[2] = 27;
+  p4 = vetor;
+  idade = *p4;
+  printf("%d \n", idade);
+/* (i) */
+  p5 = p4 + 1;
+  idade = *p5;
+  printf("%d \n", idade);
+  /* (j) */
+  p4 = p5 + 1;
+  idade = *p4;
+  printf("%d \n", idade);
+  /* (l) */
+  p4 = p4 - 2;
+  idade = *p4;
+  printf("%d \n", idade);
+  /* (m) */
+  p5 = &vetor[2] - 1;
+  printf("%d \n", *p5);
+  /* (n) */
+  p5`;
+  printf("%d \n", *p5);
+  return(0);
+}
+//resultados:
+
+/*
+    (a) 
+  valor = 10;                   Esperado: 10
+  p1 = &valor;                  Obtido: 20
+  *p1 = 20;
+  printf("%d \n", valor);
+
+    (b)
+  temp = 26.5;                  Esperado: 29
+  p2 = &temp;                   Obtido: 29
+  *p2 = 29.0;
+  printf("%.1f \n", temp);
+
+    (c)
+  p3 = &nome[0];
+  aux = *p3;                    Esperado: P
+  printf("%c \n", aux);         Obtido: P
+
+    (d)
+  p3 = &nome[4];
+  aux = *p3;                    Esperado: e
+  printf("%c \n", aux);         Obtido: e
+
+    (e)
+  p3 = nome;                    Esperado: P
+  printf("%c \n", *p3);         Obtido: P
+
+    (f) 
+  p3 = p3 + 4;                  Esperado: e
+  printf("%c \n", *p3);         Obtido: e
+
+    (g)
+  p3--;                         Esperado: n
+  printf("%c \n", *p3);         Obtido: t
+
+    (h) 
+  vetor[0] = 31;
+  vetor[1] = 45;                Esperado: 31
+  vetor[2] = 27;                 Obtido: 31
+  p4 = vetor;
+  idade = *p4;
+  printf("%d \n", idade);
+
+    (i)
+  p5 = p4 + 1;
+  idade = *p5;                  Esperado: 45
+  printf("%d \n", idade);       Obtido: 45
+
+    (j) 
+  p4 = p5 + 1;
+  idade = *p4;                  Esperado: 31
+  printf("%d \n", idade);       Obtido: 31
+
+    (l) 
+  p4 = p4 - 2;
+  idade = *p4;                  Esperado: x
+  printf("%d \n", idade);       Obtido: 31
+
+
+    (m) 
+  p5 = &vetor[2] - 1;           Esperado: 45
+  printf("%d \n", *p5);         Obtido: 45
+
+    (n) 
+  p5`;                          Esperado: 27
+  printf("%d \n", *p5);         Obtido: 27
+*/
+
+Questão 06)
+int main(void){
+  float vet[5] = {1.1,2.2,3.3,4.4,5.5};
+  float *f;
+  int i;
+  f = vet;
+  printf("contador/valor/valor/endereco/endereco");
+  for(i = 0 ; i <= 4 ; i++){
+  printf("\ni = %d",i);
+  printf("vet[%d] = %.1f",i, vet[i]);
+  printf("*(f + %d) = %.1f",i, *(f+i));
+  printf("&vet[%d] = %X",i, &vet[i]);
+  printf("(f + %d) = %X",i, f+i);
+  }
+} //Resultado: contador/valor/valor/endereco/endereco
+/*
+i = 0vet[0] = 1.1*(f + 0) = 1.1&vet[0] = 61FF04(f + 0) = 61FF04
+i = 1vet[1] = 2.2*(f + 1) = 2.2&vet[1] = 61FF08(f + 1) = 61FF08
+i = 2vet[2] = 3.3*(f + 2) = 3.3&vet[2] = 61FF0C(f + 2) = 61FF0C
+i = 3vet[3] = 4.4*(f + 3) = 4.4&vet[3] = 61FF10(f + 3) = 61FF10
+i = 4vet[4] = 5.5*(f + 4) = 5.5&vet[4] = 61FF14(f + 4) = 61FF14
+*/
+
+Questão 07)
+◦ *(pulo + 2);     //*(pulo + 2); é o que faz referência ao valor do terceiro elemento
+◦ *(pulo + 4);
+◦ pulo + 4;
+◦ pulo + 2;
+
+Questão 08)
+◦ p = mat + 1; 
+◦ p = mat;`
+◦ p =`mat;
+◦ x = (*mat);`
+x = (*mat);` //essa opção é a unica que permite x receber o primeiro valor do vetor mat
+
+Questão 09)
+int main(){
+  int vet[] = {4,9,13};
+  int i;
+  for(i=0;i<3;i++){
+  printf("%d ",*(vet+i));
+  }
+}
+// O primeiro ira imprimir os três valores do vetor vet[] na forma decimal "%d" devido ao laço for.
+
+
+
+int main(){
+  int vet[] = {4,9,13};
+  int i;
+  for(i=0;i<3;i++){
+  printf("%X ",vet+i);
+  }
+}
+// o segundo vai imprimir os três valores, porém, será impresso na forma decimal devido ao "%X"
+
+Questão 11)
+#include <stdlib.h>
+#include <stdio.h>
+
+/*Identifique quais dos seguintes comandos é válido ou inválido: 
+a. aloha[2] = value; VÁLIDO
+b. scanf("%f", &aloha); INVÁLIDO
+c. aloha = "value"; INVÁLIDO
+d. printf("%f", aloha); INVÁLIDO
+e. coisas[4][4] = aloha[3]; VÁLIDO
+f. coisas[5] = aloha; INVÁLIDO
+g. pf = value; VÁLIDO
+h. pf = aloha; VÁLIDO
+*/
+
+int main(){
+float aloha[10], coisas[10][5], *pf, value = 2.2; 
+int i=3;
+
+/*a*/
+aloha[2] = value;
+
+/*b*/
+//scanf("%f", &aloha);
+
+/*c*/
+//aloha = "value";
+
+/*d*/
+//printf("%f", aloha);
+
+/*e*/
+//coisas[4][4] = aloha[3];
+
+/*f*/
+//coisas[5] = aloha;
+
+/*g*/
+//pf = value;
+
+/*h*/
+//pf = aloha;
+
+return 0;
+} 
+
+Questão 12) 
+O ponteiro pode ser entendido como uma referência para a função, sem precisar digitar a função diversas vezes no código. Desse modo, através da alocação de memória, os ponteiros são mais práticas na aplicação em funções.
+#include <stdio.h>
+#include <stdlib.h>
+
+void AlterarVetor(int * vetor, int elementos);
+
+int main()
+{
+    int v[] = {5, 10, 15, 3, 10, 76, 5, 13, 33, 45};
+    int * pt;
+    int i;
+
+    pt = v; //atribui o endereço do vetor
+
+    AlterarVetor(v, 10);
+
+    for(i = 0; i < 10; i++)
+    {
+        printf("V[%i] = %i\r\n", i, *(pt + i));
+    }
+ 
+    return 0;
+}
+
+
+void AlterarVetor(int * vetor, int elementos)
+{
+    int i;
+    
+    if(vetor != NULL)
+    {
+       for(i = 0; i < elementos; i++)
+       {
+          *(vetor) = *(vetor) * 2; //ex: V[i] = V[i] * 2
+          vetor++; //desloca o ponteiro para o próximo elemento
+       } 
+    }
+}
+Questão 13)
+#include <stdio.h>
+#include <stdlib.h>
+
+
+float ordenar(int n, float *vetor, float aux){
+
+    // Recebe o tamanho do vetor.
+    printf("Quantidade de termos do vetor: ");
+    scanf ("%i", &n);
+
+    //Alocando espaço para um bloco de bytes na memória.
+    vetor = malloc(n*sizeof(float));
+    printf("\n");
+
+    
+        //Laço para inserção de valores
+
+        for(int i = 0; i < n; i++){
+            printf("Informe o numero: ");
+            scanf("%f", &vetor[i]);
+        }
+
+    //Exibe endereco e conteúdo do vetor
+    printf("\nVetores digitados: ");
+
+    for(int i =0; i < n; i++){
+            printf("Endereco: %X Valor:%f ", vetor+i, *(vetor+i));
+            printf("|");
+    }
+
+    //Ordena os vetores na ordem crescente
+    for(int i = 0; i < n; i++){
+        for(int b = i; b < n; b++){
+
+            if(vetor[i] > vetor[b]){
+                aux = vetor[i];
+                vetor[i] = vetor[b];
+                vetor[b] = aux;
+            }
+        }
+    }
+
+    //Exibe endereco e conteudo do vetor, agora ordenado
+    printf("\nOrdendo: ");
+    for(int i =0; i < n; i++){
+            printf("Endereco: %X Valor:%f ", vetor+i, *(vetor+i));
+            printf("|");
+    }
+}
+
+int main()
+{
+    float *vetor;
+    int aux;
+    int n;
+
+        ordenar(n, vetor, aux); // Chamando a funcao ordenar(), para ordenar em ordem crescente
+    free(vetor);
+    
+    printf ("\n") ;
+    return (0);
+} 
+QUestão 14)
+#include <stdio.h>
+#include <stdlib.h>
+
+/*Explicação qsort: http://www.cplusplus.com/reference/cstdlib/qsort/
+Comando: 
+void qsort (void* base, size_t num, size_t size,
+            int (*compar)(const void*,const void*));
+"Sort" = "Organizar".
+Organiza elemenos de um array. 
+Organiza o "num" de elementos do array apontados pela "base", cada elemento de "size"
+bytes de comprimento, usando a função compar para determinar a ordem.
+O algoritmo usado por essa função compara pares de elementos pela chamada de uma função
+"compar" determinada.
+A função não retorna nenhum valor, mas modifica o  
+A ordem dos elementos equivalentes é indefinida.
+ 
+ */
+
+
+   // A função comparar recebe dois ponteiros constantes
+   int compar(const void * a, const void * b){
+    return (int) (*(int *)a - * (int *)b);
+    
+}
+int main()
+{
+    float *vetor;
+    int n;
+    
+    // Recebe o tamanho do vetor.
+    printf("Quantidade de termos do vetor: ");
+    scanf ("%i", &n); 
+
+    //Alocando espaço para um bloco de bytes na memória.
+    vetor = malloc(n*sizeof(float)); 
+    printf("\n");
+
+        //Laço para inserção de valores
+        for(int i = 0; i<n; i++){
+            printf("Informe o numero: ");
+            scanf("%f", &vetor[i]);
+        } 
+
+    //Exibe endereco e conteúdo do vetor
+    printf("\nVetores digitados: ");
+    for(int i =0; i < n; i++){
+            printf("Posicao: %x Valor:%f ", vetor+i, *(vetor+i));
+            printf("|");
+    }
+
+    qsort(vetor, n, sizeof(float), compar);
+    
+
+    //Exibe endereco e conteudo do vetor, agora ordenado
+    printf("\nOrdenado: ");
+    for(int i = 0; i < n; i++){
+            printf("Endereco: %X Valor:%f ", vetor+i, *(vetor+i));
+            printf("|");
+    }
+    
+    printf("\n");
+    free(vetor);
+    return (0);
+}
+Questão 17)
+#include<stdio.h>
+#include<stdlib.h>
+
+void somaVetor(int *vetorA, int *vetorB, int *vetorC, int n){
+   for(int i = 0; i < n; i++){
+    *(vetorC+i) = *(vetorA+i) + *(vetorB+i);
+   }
+}
+
+int main(){
+
+int n;
+    printf("Digite o tamanho dos vetores: ");
+    scanf("%d", &n);
+
+int vetorA[n], vetorB[n], vetorC[n], i;
+
+   for(i = 0; i < n; i++){
+    printf("Digite o valor (%d) do primeiro vetor: ", i + 1);
+    scanf("%d", &vetorA[i]); 
+   }
+    printf ("\n");
+
+   for(i = 0; i < n; i++){
+    printf("Digite o valor (%d) do segundo vetor: ", i + 1);
+    scanf("%d", &vetorB[i]);
+   }
+
+vetorA[n] = malloc(n*sizeof(float));
+vetorB[n] = malloc(n*sizeof(float));
+vetorC[n] = malloc(n*sizeof(float));
+
+
+somaVetor(vetorA, vetorB, vetorC, n);
+
+printf("\n");
+
+printf("A soma dos vetores e': ");
+for(int i = 0; i < n; i++){
+    printf("%d ", *(vetorC+i));
+}
+
+free(vetorA);
+free(vetorB);
+free(vetC);
+
+    return 0;
+}
+Questão 19)
+#include "gc.h"
+#include <assert.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int i;
+    const int size = 10000000;
+
+    GC_INIT();
+    for (i = 0; i < size; ++i)
+    {
+        int **p = GC_MALLOC(sizeof *p);
+        int *q = GC_MALLOC_ATOMIC(sizeof *q);
+
+        assert(*p == 0);
+        *p = GC_REALLOC(q, 2 * sizeof *p);
+        if (i == size-1){
+            printf("Heap size = %zu\n", GC_get_heap_size());
+        }
+    }
+    return 0;
+}
+Questão 20)
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <gc/gc.h>
+#include <time.h>
+
+int main(void)
+{
+
+    int i;
+    const int size = 10000000;
+    clock_t t, t1;
+
+    t = clock();
+    GC_INIT();
+    for (i = 0; i < size; ++i){
+        int **p = GC_MALLOC(sizeof(int));
+    }
+    t = clock() - t;
+    printf("%f segundos", ((float)t)/CLOCKS_PER_SEC);
+
+    t1 = clock();
+    for (i = 0; i < size; ++i){
+        int **q = malloc(sizeof(int));
+    free(q);
+    }
+
+    t1 = clock() - t1; 
+    printf("%f segundos", ((float)t1)/CLOCKS_PER_SEC);
+
+    return 0;
+}
